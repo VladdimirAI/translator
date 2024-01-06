@@ -1,0 +1,5 @@
+contentBuilder
+allJavaCode
+writer
+startFolder
+fileContent
