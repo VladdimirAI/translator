@@ -1,2 +1,2 @@
-main---osnovnoy
-
+main---osnovnoyy
+analyzeFile---analizFaila

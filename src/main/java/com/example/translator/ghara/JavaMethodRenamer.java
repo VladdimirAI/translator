@@ -1,5 +1,6 @@
 package com.example.translator.ghara;
 
+import com.example.translator.ghara.obhod.DirectoryProcessor;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -46,13 +47,25 @@ public class JavaMethodRenamer {
             }
         }, null);
 
-        Path outputPath = Paths.get(outputDir, new File(javaFilePath).getName());
+//        Path outputPath = Paths.get(outputDir, new File(javaFilePath).getName());
+//        Files.write(outputPath, cu.toString().getBytes());
+        // Изменяем сохранение файла
+        Path outputPath = Paths.get(javaFilePath); // Используем исходный путь файла для сохранения
         Files.write(outputPath, cu.toString().getBytes());
     }
 
     public static void main(String[] args) throws Exception {
-        JavaMethodRenamer renamer = new JavaMethodRenamer();
-        renamer.loadMethodMappings("methods.txt");
-        renamer.renameMethodsInFile("C:\\JavaFileReader.java", "C:\\22");
+//        JavaMethodRenamer renamer = new JavaMethodRenamer();
+//        renamer.loadMethodMappings("methods.txt");
+//        renamer.renameMethodsInFile("C:\\JavaFileReader.java", "C:\\22");
+
+
+            JavaMethodRenamer renamer = new JavaMethodRenamer();
+            renamer.loadMethodMappings("methods.txt");
+
+            DirectoryProcessor processor = new DirectoryProcessor(renamer);
+            processor.processDirectory(new File("C:\\22\\translator")); // Путь к директории
+
+
     }
 }
